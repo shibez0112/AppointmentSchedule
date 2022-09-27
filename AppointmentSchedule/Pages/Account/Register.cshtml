@@ -1,0 +1,24 @@
+﻿@page
+@model AppointmentSchedule.Pages.Account.RegisterModel
+
+<div class="m-1 p-1">
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label>User Name</label>
+            <input asp-for="Username" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input asp-for="Email" type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input asp-for="Password" type="password" class="form-control" />
+        </div>
+        <div class="py-2">
+            <button type="submit" class="btn btn-primary">Register</button>
+            @*<a class="btn btn-secondary" asp-page="list">Back</a>*@
+        </div>
+    </form>
+</div>
