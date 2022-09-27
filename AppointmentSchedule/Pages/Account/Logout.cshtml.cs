@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AppointmentSchedule.Pages.Account
 {
-    [Authorize]
     public class LogoutModel : PageModel
     {
         private SignInManager<IdentityUser> signInManager;
@@ -14,9 +13,13 @@ namespace AppointmentSchedule.Pages.Account
         {
             signInManager = signInMgr;
         }
-        
+
         public async Task<RedirectResult> OnGet()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Account/AcessDenied");
+            }
             await signInManager.SignOutAsync();
             return Redirect("/");
         }
