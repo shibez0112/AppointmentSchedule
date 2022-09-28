@@ -11,7 +11,11 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<AppointmentScheduleContext>();
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options=>
+{
+    options.Conventions.AuthorizeFolder("/Appointments");
+}
+);
 
 var app = builder.Build();
 

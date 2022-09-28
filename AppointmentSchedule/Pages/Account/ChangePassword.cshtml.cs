@@ -12,11 +12,11 @@ namespace AppointmentSchedule.Pages.Account
 
         [BindProperty]
         [Required]
-        public string? Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         [BindProperty]
         [Required]
-        public string? RetypePassword { get; set; }
+        public string RetypePassword { get; set; } = string.Empty;
 
         public ChangePasswordModel(UserManager<IdentityUser> userMgr) {
             userManager = userMgr;
@@ -34,6 +34,10 @@ namespace AppointmentSchedule.Pages.Account
 
         public async Task<IActionResult> OnPost()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Account/AcessDenied");
+            }
             if (ModelState.IsValid) {
                 if (Password == RetypePassword) {
 
