@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AppointmentSchedule.Data;
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +16,16 @@ builder.Services.AddRazorPages(options=>
     options.Conventions.AuthorizeFolder("/Appointments");
 }
 );
+
+builder.Services.Configure<IdentityOptions>(opts => {
+    opts.Password.RequiredLength = 6;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequireDigit = false;
+    opts.User.RequireUniqueEmail = true;
+    opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+});
 
 var app = builder.Build();
 
