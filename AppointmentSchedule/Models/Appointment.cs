@@ -13,7 +13,7 @@ namespace AppointmentSchedule.Models
         public string Title { get; set; } = string.Empty;
 
         [Required]
-        [Display(Name ="Created Date")]
+        [Display(Name ="Date")]
         [DataType(DataType.Date)]
         public DateTime CreatedDate { get; set; }
 

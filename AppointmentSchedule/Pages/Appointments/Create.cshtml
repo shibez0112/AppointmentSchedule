@@ -6,25 +6,24 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Create appointments</h1>
 
-<h4>Appointment</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Appointment.Title" class="control-label"></label>
                 <input asp-for="Appointment.Title" class="form-control" />
                 <span asp-validation-for="Appointment.Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Appointment.CreatedDate" class="control-label"></label>
                 <input asp-for="Appointment.CreatedDate" class="form-control" />
                 <span asp-validation-for="Appointment.CreatedDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -32,7 +31,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a class="btn btn-secondary" asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {
